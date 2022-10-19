@@ -4,7 +4,7 @@ volatile unsigned short *videoBuffer = (volatile unsigned short *) 0x6000000;
 u32 vBlankCounter = 0;
 
 void waitForVBlank(void) {
-  // TODO: IMPLEMENT
+
 
   // (1)
   // Write a while loop that loops until we're NOT in vBlank anymore:
@@ -44,7 +44,7 @@ void drawRectDMA(int row, int col, int width, int height, volatile u16 color) {
 }
 
 void drawFullScreenImageDMA(const u16 *image) {
-  // TODO: IMPLEMENT
+
   for (int r = 0; r < HEIGHT; r++) {
   DMA[3].src=image;
   DMA[3].dst = videoBuffer;
@@ -55,7 +55,7 @@ void drawFullScreenImageDMA(const u16 *image) {
 
 
 void drawImageDMA(int row, int col, int width, int height, const u16 *image) {
-  // TODO: IMPLEMENT
+  
    for(int r=0;r<height;r++){
    DMA[3].src= &image[OFFSET(r, 0, width)];
     DMA[3].dst = &videoBuffer[OFFSET(row+r,col,WIDTH)];
@@ -65,7 +65,7 @@ void drawImageDMA(int row, int col, int width, int height, const u16 *image) {
 }
 
 void undrawImageDMA(int row, int col, int width, int height, const u16 *image) {
-  // TODO: IMPLEMENT
+  
   UNUSED(row);
   UNUSED(col);
   UNUSED(width);
@@ -77,7 +77,7 @@ void undrawImageDMA(int row, int col, int width, int height, const u16 *image) {
 }
 
 void fillScreenDMA(volatile u16 color) {
-  // TODO: IMPLEMENT
+  
   for (int r = 0; r < HEIGHT; r++) {
   DMA[3].src=&color;
   DMA[3].dst = videoBuffer;
